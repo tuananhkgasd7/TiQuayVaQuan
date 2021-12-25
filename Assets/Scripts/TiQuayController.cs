@@ -11,12 +11,12 @@ public class TiQuayController : MonoBehaviour
     float vertical;
   
     //Animator
-    Animator anim;
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,9 +30,9 @@ public class TiQuayController : MonoBehaviour
         if(!Mathf.Approximately(moving.x, 0.0f) || !Mathf.Approximately(moving.y, 0.0f)){
             direction = moving.normalized;
         }
-        anim.SetFloat("Move X", direction.x);
-        anim.SetFloat("Move Y", direction.y);
-        anim.SetFloat("Speed", moving.magnitude);
+        animator.SetFloat("Move X", direction.x);
+        animator.SetFloat("Move Y", direction.y);
+        animator.SetFloat("Speed", moving.magnitude);
 
         // if(Input.GetKeyDown(KeyCode.Space)){
         //     Launch();
