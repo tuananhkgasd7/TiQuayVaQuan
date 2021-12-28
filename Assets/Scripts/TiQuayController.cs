@@ -12,6 +12,27 @@ public class TiQuayController : MonoBehaviour
   
     //Animator
     Animator animator;
+
+    //Inventory
+    private Inventory inventory;
+    [SerializeField] private UI_Inventory uiInventory;
+
+    private void Awake(){
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider) {
+        ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
+        if(itemWorld != null){
+            // if(Input.GetKey(KeyCode.Space)){
+                inventory.AddItem(itemWorld.GetItem());
+                itemWorld.DestroySelf();
+            // }
+        }
+    
+    }
+
     // Start is called before the first frame update
     void Start()
     {
